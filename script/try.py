@@ -4,9 +4,7 @@ import scipy.io
 import matplotlib.pyplot as plt
 
 # 设置 NMF 模型
-n_components = 3  # 分解后的矩阵的潜在特征数
-model = NMF(n_components=n_components, init='random', random_state=0, l1_ratio=0.16,alpha_W=0.0012)
-
+model = NMF(n_components=3, init='random', random_state=0,l1_ratio=0.1,alpha_H=0.0012,alpha_W=0.002)
 
 # 读取 .mat 文件
 mat_data = scipy.io.loadmat('.//data//moment_matrix.mat')
@@ -40,4 +38,3 @@ for num in range(8):
     moment_out.update(data_dict)
     
 scipy.io.savemat('multiple_data.mat',  moment_out)
-print( moment_out.keys())
